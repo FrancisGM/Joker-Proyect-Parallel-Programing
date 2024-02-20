@@ -169,7 +169,7 @@ void opcMatrixOperation(std::string operation)
 
     getInputMatrix(matrixA, "A");
     getInputMatrix(matrixB, "B");
-    //atrixA = generateMatrix(300,2);
+    //matrixA = generateMatrix(300,2);
     //matrixB= generateMatrix(300,2);
     Matrix matrixA_2 = matrixA;
     Matrix matrixB_2 = matrixB;
