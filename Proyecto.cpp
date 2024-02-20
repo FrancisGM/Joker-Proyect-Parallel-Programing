@@ -2,6 +2,7 @@
 #include <vector>
 #include <thread>
 #include <atomic>
+#include <cmath>
 #include <string>
 
 using Matrix = std::vector<std::vector<double>>;
@@ -61,7 +62,8 @@ void multiplyMatrices(const Matrix &matrixA, const Matrix &matrixB, Matrix &resu
 }
 
 void parallelMatrixOperation(const Matrix &matrixA, const Matrix &matrixB, Matrix &result, int numThreads, std::string operation){
-    int rowsPerThread = matrixA.size() / numThreads;
+    double rowsPerThreadDouble = matrixA.size() / numThreads;
+    int rowsPerThread = static_cast<int>(floor(rowsPerThreadDouble));
     std::vector<std::thread> threads;
     if (operation == "suma"){
         auto parallel_startTime = std::chrono::high_resolution_clock::now();
@@ -88,7 +90,8 @@ void parallelMatrixOperation(const Matrix &matrixA, const Matrix &matrixB, Matri
 }
 
 void parallelMatrixMultiplication(const Matrix &matrixA, const Matrix &matrixB, Matrix &result, int numThreads){
-    int rowsPerThread = matrixA.size() / numThreads;
+    double rowsPerThreadDouble = matrixA.size() / numThreads;
+    int rowsPerThread = static_cast<int>(floor(rowsPerThreadDouble));
     std::vector<std::thread> threads;
 
     auto parallel_startTime = std::chrono::high_resolution_clock::now();
@@ -140,6 +143,9 @@ void opcMatrixMultiplication(){
     Matrix result_2 = result;
 
     int numThreads = std::thread::hardware_concurrency();
+    while(numThreads > static_cast<int>(matrixA.size())){
+        numThreads--;
+    }
 
     auto sequential_startTime = std::chrono::high_resolution_clock::now();
     multiplyMatrices(matrixA_2, matrixB_2, result_2, 0, matrixA_2.size());
@@ -184,7 +190,10 @@ void opcMatrixOperation(std::string operation)
 
     Matrix result_2 = result;
 
-    int numThreads = 3;
+    int numThreads = std::thread::hardware_concurrency();
+    while(numThreads > static_cast<int>(matrixA.size())){
+        numThreads--;
+    }
 
     parallelMatrixOperation(matrixA, matrixB, result, numThreads, operation);
 
@@ -233,6 +242,7 @@ int main()
         {
             std::cout << "----------------------------" << std::endl;
             opcMatrixOperation("suma");
+            std::cout << "----------------------------" << std::endl;
             break;
         }
         case '2':
