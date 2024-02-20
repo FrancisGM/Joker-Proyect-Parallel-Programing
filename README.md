@@ -1,4 +1,4 @@
-# Calculadora de matrices con programacion paralela
+# Calculadora de matrices con programación paralela
 
 Sencillo programa encargado de hacer operaciones elementales con matrices, mediante este programa se puede evidenciar las ventajas de la programación paralela y concurrente. 
 
@@ -66,6 +66,10 @@ Sencillo programa encargado de hacer operaciones elementales con matrices, media
     - Aqui se encuentra el contador de hilos.
     
 ## Capturas
+
+- **Menu Principal**
+
+  ![Alt text](./images/MenuPrincipal.png)
 
 - **Suma**
   
