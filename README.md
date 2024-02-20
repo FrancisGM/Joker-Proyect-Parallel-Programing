@@ -16,38 +16,65 @@ Sencillo programa encargado de hacer operaciones elementales con matrices, media
 
 ## Funcionamiento
 - **Suma y resta**
+
   - `opcMatrixOperation()`
+  
     - Validación de la operación.
     - Genera las dimensiones de la matriz resultante.
     - Aqui se definen el numero de hilos.
     - Invoca a `parallelMatrixOperation()`.
     - Imprime los operadores y el resultado.
     - Muestra métricas.
+  
   - `parallelMatrixOperation()`
+  
     - Aqui se define que operación usar (suma o resta) PD: se implementó ambas aquí debido a que no hay mucha diferencia en los calculos.
     - Se definen las filas por hilo (`rowsPerThread`), se calcula mediante la división de las filas de la primera matriz entre el numero de hilos (`numThreads`).
     - Todos los hilos menos uno se les asigna una cantidad de filas con las que trabajar.
     - Al ultimo hilo se le asignan las filas restantes.
+  
   - `addMatrices()`
+  
     - Se encarga de sumar las filas que le fueron asignadas.
     - Aqui se encuentra el contador de hilos.
+  
   - `subtractMatrices()`
+  
     - Se encarga de restar las filas que le fueron asignadas.
     - Aqui se encuentra el contador de hilos.
+
 - **Multiplicación**
+
   - `opcMatrixMultiplication()`
+  
     - Validación de la operación.
     - Genera las dimensiones de la matriz resultante.
     - Aqui se definen el numero de hilos.
     - Invoca a `parallelMatrixMultiplication()`.
     - Imprime los operadores y el resultado.
     - Muestra métricas.
+  
   - `parallelMatrixMultiplication()`
+  
     - Se definen las filas por hilo (`rowsPerThread`), se calcula mediante la división de las filas de la primera matriz entre el numero de hilos (`numThreads`).
     - Todos los hilos menos uno se les asigna una cantidad de filas con las que trabajar.
     - Al ultimo hilo se le asignan las filas restantes.
+  
   - `multiplyMatrices()`
+  
     - Se encarga de operar las filas que le fueron asignadas.
     - Aqui se encuentra el contador de hilos.
-##Capturas
- 
+    
+## Capturas
+
+- **Suma**
+  
+  ![Alt text](./images/Suma.png)
+
+- **Resta**
+
+  ![Alt text](./images/Resta.png)
+
+- **Multiplicacón**
+
+  ![Alt text](./images/Multiplicación.png)
