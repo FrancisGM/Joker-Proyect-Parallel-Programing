@@ -166,7 +166,7 @@ void opcMatrixMultiplication(){
     std::cout << "Tiempo de ejecucion secuencial: " << sequential_time.count() * 1000 << " ms" << std::endl;
     std::cout << "Tiempo de ejecucion paralelo: " << parallel_time.count() * 1000 << " ms" << std::endl;
     std::cout << "Speedup: " << sequential_time / parallel_time << std::endl;
-    std::cout << "Eficiencia: " << 100*(sequential_time / parallel_time)/numThreads << std::endl;
+    std::cout << "Eficiencia: " << 100*(sequential_time / parallel_time)/4 <<"%"<< std::endl;
 }
 
 void opcMatrixOperation(std::string operation)
@@ -217,11 +217,10 @@ void opcMatrixOperation(std::string operation)
     printMatrix(result);
 
     std::cout << "\nTotal de hilos utilizados: " << totalThreads << std::endl;
-    std::cout << "\nTotal de hilos utilizados: " << totalThreads << std::endl;
     std::cout << "Tiempo de ejecucion secuencial: " << sequential_time.count() * 1000 << " ms" << std::endl;
     std::cout << "Tiempo de ejecucion paralelo: " << parallel_time.count() * 1000 << " ms" << std::endl;
     std::cout << "Speedup: " << sequential_time / parallel_time << std::endl;
-    std::cout << "Eficiencia: " << 100*(sequential_time / parallel_time)/numThreads << std::endl;
+    std::cout << "Eficiencia: " << 100*(sequential_time / parallel_time)/4 <<"%"<< std::endl;
 }
 
 int main()
